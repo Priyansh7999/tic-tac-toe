@@ -34,6 +34,11 @@ export default function Board() {
         }
         return null;
     }
+
+    const resetGame = () => {
+        setSquares(Array(9).fill(null));
+        setIsNext(true);
+    }
     return (
         <div className="flex flex-col items-center justify-center h-screen">
             <div className='relative flex justify-center items-center mb-6'>
@@ -57,7 +62,14 @@ export default function Board() {
                     />
                 ))}
             </div>
-
+            <div>
+                <button
+                    className="mt-6 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                    onClick={resetGame}
+                >
+                    Reset Game
+                </button>
+            </div>
 
         </div>
     )
