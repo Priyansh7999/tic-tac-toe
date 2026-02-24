@@ -41,15 +41,15 @@ export default function Board() {
     }
     return (
         <div className="flex flex-col items-center justify-center w-full">
-            <div className='w-2/3 px-4 py-2 bg-slate-600 rounded mb-6 text-center flex justify-between'>
-                <p className='text-white font-mono'>Player 1 : X</p>
-                <p className='text-white font-mono'>Player 2 : O</p>
+            <div className='w-2/3 mt-10 px-4 py-2 bg-custom-dark-blue rounded mb-6 text-center flex justify-between'>
+                <p className='text-custom-blue font-mono'>Player 1 : X</p>
+                <p className='text-custom-green font-mono'>Player 2 : O</p>
             </div>
             <div className=''>
                 {
                     winner ? (
                         <h2 className='text-2xl font-mono text-green-500 mb-4'>
-                            Winner: {winner}
+                            Winner: {winner==='X' ? 'Player 1' : 'Player 2'}
                         </h2>
                     ) : isDraw ? (
                         <h2 className='text-2xl font-mono text-yellow-400 mb-4'>

@@ -3,7 +3,7 @@ import Board from './components/Board'
 import Header from './components/Header'
 export default function App() {
   return (
-    <div className='bg-slate-600 min-h-screen'>
+    <div className='bg-custom-dark min-h-screen'>
       <Header />
       <Board />
     </div>
