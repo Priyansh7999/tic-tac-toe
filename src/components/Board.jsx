@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Square from './Square'
 export default function Board() {
 
     const [squares, setSquares] = useState(Array(9).fill(null));
     const [isNext, setIsNext] = useState(true);
-    const winner = calculateWinner(squares);
-
+    let winner = calculateWinner(squares);
+    const isDraw = !winner && squares.every(box => box !== null);
 
     const handleSquareClick = (index) => {
-        if (squares[index] || winner) return;
+        if (squares[index] || winner || isDraw) return;
         const newSquares = [...squares];
         newSquares[index] = isNext ? 'X' : 'O';
         setSquares(newSquares);
@@ -47,9 +47,19 @@ export default function Board() {
             </div>
             <div className=''>
                 {
-                    winner ?
-                        <h2 className='text-2xl font-mono text-green-500 mb-4'>Winner: {winner}</h2>
-                        : <h2 className='text-2xl font-mono text-gray-700 mb-4'>Next Player: {isNext ? 'X' : 'O'}</h2>
+                    winner ? (
+                        <h2 className='text-2xl font-mono text-green-500 mb-4'>
+                            Winner: {winner}
+                        </h2>
+                    ) : isDraw ? (
+                        <h2 className='text-2xl font-mono text-yellow-400 mb-4'>
+                            Draw
+                        </h2>
+                    ) : (
+                        <h2 className='text-2xl font-mono text-blue-400 mb-4'>
+                            Next Player: {isNext ? 'X' : 'O'}
+                        </h2>
+                    )
                 }
             </div>
 
@@ -64,7 +74,7 @@ export default function Board() {
             </div>
             <div className='flex justify-center'>
                 <button
-                    className="mt-6 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                    className="mt-6 px-4 py-2 font-mono bg-blue-500 text-white rounded hover:bg-blue-600"
                     onClick={resetGame}
                 >
                     Reset Game
