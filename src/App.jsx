@@ -1,11 +1,11 @@
 import React from 'react'
-import './App.css'
+import Board from './components/Board'
+import Header from './components/Header'
 export default function App() {
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline text-center mt-4">
-        Tic Tac Toe
-      </h1>
+    <div className='bg-slate-600 min-h-screen'>
+      <Header />
+      <Board />
     </div>
   )
 }
