@@ -40,17 +40,17 @@ export default function Board() {
         setIsNext(true);
     }
     return (
-        <div className="flex flex-col items-center justify-center h-screen">
-            <div className='relative flex justify-center items-center mb-6'>
-                <p>Player 1 : X</p>
-                <p>Player 2 : O</p>
+        <div className="flex flex-col items-center justify-center w-full">
+            <div className='w-2/3 px-4 py-2 bg-slate-600 rounded mb-6 text-center flex justify-between'>
+                <p className='text-white font-mono'>Player 1 : X</p>
+                <p className='text-white font-mono'>Player 2 : O</p>
             </div>
             <div className=''>
-                {winner && (
-                    <p className="text-2xl font-bold mb-4">
-                        Winner: {winner}
-                    </p>
-                )}
+                {
+                    winner ?
+                        <h2 className='text-2xl font-mono text-green-500 mb-4'>Winner: {winner}</h2>
+                        : <h2 className='text-2xl font-mono text-gray-700 mb-4'>Next Player: {isNext ? 'X' : 'O'}</h2>
+                }
             </div>
 
             <div className="grid grid-cols-3 gap-2">
@@ -62,7 +62,7 @@ export default function Board() {
                     />
                 ))}
             </div>
-            <div>
+            <div className='flex justify-center'>
                 <button
                     className="mt-6 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
                     onClick={resetGame}
