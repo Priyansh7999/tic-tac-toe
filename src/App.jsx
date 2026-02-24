@@ -1,11 +1,11 @@
 import React from 'react'
-import Board from './components/Board'
 import Header from './components/Header'
+import Game from './components/Game'
 export default function App() {
   return (
     <div className='bg-custom-dark min-h-screen'>
       <Header />
-      <Board />
+      <Game/>
     </div>
   )
 }
